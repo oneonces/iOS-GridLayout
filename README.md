@@ -20,7 +20,7 @@ e.g
     DXGridCell *col1 = [[DXGridCell alloc] initWithWeight:1];// column width Weight: 1
     DXGridCell *col2 = [[DXGridCell alloc] initWithWeight:1];// column width Weight: 1
     DXGridCell *col3 = [[DXGridCell alloc] initWithWeight:1];// column width Weight: 1
-//    DXGridCell *col4 = [[DXGridCell alloc] initWithWeight:2];// column width Weight: 1
+
     DXGridCell *col4 = [[DXGridCell alloc] initWithDimension:100];// column fixed width
     
     DXGridCell *col0 = [[DXGridCell alloc] initWithWeight:1];// column width Weight: 1
