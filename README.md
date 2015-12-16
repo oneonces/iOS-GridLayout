@@ -36,6 +36,7 @@ e.g
     btn1.backgroundColor = [UIColor redColor];
     [btn1 setTitle:@"btn1" forState:UIControlStateNormal];
 //    [gridLayout addLayoutItem:btn1 Row:0 Column:0];
+
     [gridLayout addLayoutItem:btn1 Width:40 Height:40 Row:0 Column:0];
     
     UIButton *btn10 = [[UIButton alloc] init];
@@ -43,8 +44,6 @@ e.g
     [gridLayout addLayoutItem:btn10 Row:3 Column:2];
     
     [self.view addSubview:gridLayout];
-    
-    
     
     
     
