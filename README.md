@@ -40,7 +40,7 @@ e.g
     
     UIButton *btn10 = [[UIButton alloc] init];
     btn10.backgroundColor = [UIColor orangeColor];
-    [gridLayout addLayoutItem:btn10 Row:5 Column:4];
+    [gridLayout addLayoutItem:btn10 Row:3 Column:2];
     
     [self.view addSubview:gridLayout];
     
