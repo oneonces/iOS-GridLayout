@@ -14,7 +14,7 @@ e.g
     
     DXGridCell *row2 = [[DXGridCell alloc] initWithDimension:150];// row fixed Height
     
-    DXGridCell *row5 = [[DXGridCell alloc] initWithWeight:0.5];// row Height Weight: 0.5
+    DXGridCell *row3 = [[DXGridCell alloc] initWithWeight:0.5];// row Height Weight: 0.5
 
     DXGridCell *col0 = [[DXGridCell alloc] initWithWeight:1];// column width Weight: 1
     DXGridCell *col1 = [[DXGridCell alloc] initWithWeight:1];// column width Weight: 1
@@ -30,7 +30,7 @@ e.g
     //    DXGridCell *col4 = [[DXGridCell alloc] initWithWeight:2];// column width Weight: 1
     DXGridCell *col4 = [[DXGridCell alloc] initWithDimension:200];// column fixed width 200
     
-    NSArray<DXGridCell *> *rowcells = [[NSArray alloc] initWithObjects:row0, row1, row2, row3, row4, row5, nil];
+    NSArray<DXGridCell *> *rowcells = [[NSArray alloc] initWithObjects:row0, row1, row2, row3, nil];
     NSArray<DXGridCell *> *colcells = [[NSArray alloc] initWithObjects:col0, col1, col2, col3, col4, nil];
     
     gridLayout = [[DXGridLayout alloc] initWithFrame:CGRectMake(0, 0, rectSreen.size.width, rectSreen.size.height)];
