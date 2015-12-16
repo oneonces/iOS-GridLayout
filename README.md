@@ -7,6 +7,8 @@ Using
 you can use Weight or specify the width/height of the grid cell.
 
 e.g
+
+    DXPadding padding = DXPaddingMake(5, 5, 5, 5);
     
     DXGridCell *row0 = [[DXGridCell alloc] initWithWeight:1];// row Height Weight: 1
     
