@@ -29,7 +29,7 @@ e.g
     [gridLayout setPadding:padding];
     [gridLayout setRowCells:rowcells];
     
-        UIButton *btn1 = [[UIButton alloc] init];
+    UIButton *btn1 = [[UIButton alloc] init];
     btn1.backgroundColor = [UIColor redColor];
     [btn1 setTitle:@"btn1" forState:UIControlStateNormal];
 //    [gridLayout addLayoutItem:btn1 Row:0 Column:0];
