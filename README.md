@@ -31,6 +31,7 @@ e.g
     gridLayout = [[DXGridLayout alloc] initWithFrame:CGRectMake(0, 0, rectSreen.size.width, rectSreen.size.height)];
     [gridLayout setPadding:padding];
     [gridLayout setRowCells:rowcells];
+    [gridLayout setColumnCells:colcells];
     
     UIButton *btn1 = [[UIButton alloc] init];
     btn1.backgroundColor = [UIColor redColor];
