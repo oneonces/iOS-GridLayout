@@ -8,9 +8,7 @@ you can use Weight or specify the width/height of the grid cell.
 
 e.g
     DXGridCell *row0 = [[DXGridCell alloc] initWithWeight:1];// row Height Weight: 1
-    
 //    DXGridCell *row1 = [[DXGridCell alloc] initWithWeight:1];// row Height Weight: 1
-
     DXGridCell *row1 = [[DXGridCell alloc] initWithDimension:100];// row fixed Height
 //    DXGridCell *row2 = [[DXGridCell alloc] initWithWeight:1];// row Height Weight: 1
     DXGridCell *row2 = [[DXGridCell alloc] initWithDimension:150];// row fixed Height
