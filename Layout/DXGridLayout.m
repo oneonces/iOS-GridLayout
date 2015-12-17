@@ -25,8 +25,6 @@
 @implementation DXGridLayout
 
 
-@synthesize rowCells, columnCells;
-
 
 -(id)init {
     return [self initWithFrame:[self defaultFrame]];
@@ -66,10 +64,44 @@
     }
     else if ([[parent class] isSubclassOfClass:[UIViewController class]]) {
         UIViewController *vc = parent;
-        rect = vc.view.frame;
+        rect = vc.view.bounds;
     }
     
     return rect;
+}
+
+-(void)setRowCellsWithObject:(DXGridCell *)firstCell, ... {
+    NSMutableArray<DXGridCell *> *cellList = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    va_list args;
+    va_start(args, firstCell);
+    if (nil != firstCell) {
+        [cellList addObject:firstCell];
+        
+        DXGridCell * cell;
+        while (nil != (cell = va_arg(args, DXGridCell *))) {
+            [cellList addObject:cell];
+        }
+    }
+    va_end(args);
+    self.rowCells = [cellList copy];
+}
+
+-(void)setColumnCellsWithObject:(DXGridCell *)firstCell, ... {
+    NSMutableArray<DXGridCell *> *cellList = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    va_list args;
+    va_start(args, firstCell);
+    if (nil != firstCell) {
+        [cellList addObject:firstCell];
+        
+        DXGridCell * cell;
+        while (nil != (cell = va_arg(args, DXGridCell *))) {
+            [cellList addObject:cell];
+        }
+    }
+    va_end(args);
+    self.columnCells = [cellList copy];
 }
 
 // 默认只有1行1列
@@ -266,11 +298,17 @@
     
     DXMargin margin = viewItem.attribute.margin;
     if (viewItem.attribute.width >= itemWidth || viewItem.attribute.width >= (itemWidth + margin.left + margin.right)) {
-        viewItem.attribute.width = itemWidth - margin.left - margin.right;
+        viewItem.attribute.actualWidth = itemWidth - margin.left - margin.right;
+    }
+    else {
+        viewItem.attribute.actualWidth = viewItem.attribute.width;
     }
     
     if (viewItem.attribute.height >= itemHeight || viewItem.attribute.height >= (itemHeight + margin.top + margin.bottom)) {
-        viewItem.attribute.height = itemHeight - margin.top - margin.bottom;
+        viewItem.attribute.actualheight = itemHeight - margin.top - margin.bottom;
+    }
+    else {
+        viewItem.attribute.actualheight = viewItem.attribute.height;
     }
     
     // not set the width or height, default use Stretch Alignment
@@ -280,40 +318,40 @@
     // has set the width and height and alignment
     else {// use the specified alignment
         if (DXAlignHorizontalLeft == (alig & DXAlignHorizontalLeft)) {
-            margin.right = itemWidth - viewItem.attribute.width - margin.left;
+            margin.right = itemWidth - viewItem.attribute.actualWidth - margin.left;
             if (DXAlignHorizontalLeft == alig) {
-                margin.top = margin.bottom = (itemHeight - viewItem.attribute.height) / 2;
+                margin.top = margin.bottom = (itemHeight - viewItem.attribute.actualheight) / 2;
             }
         }
 
         if (DXAlignHorizontalCenter == (alig & DXAlignHorizontalCenter)) {
-            margin.left = margin.right = (itemWidth - viewItem.attribute.width) / 2;
+            margin.left = margin.right = (itemWidth - viewItem.attribute.actualWidth) / 2;
             if (DXAlignHorizontalCenter == alig)
-                margin.top = margin.bottom = (itemHeight - viewItem.attribute.height) / 2;
+                margin.top = margin.bottom = (itemHeight - viewItem.attribute.actualheight) / 2;
         }
 
         if (DXAlignHorizontalRight == (alig & DXAlignHorizontalRight))  {
-            margin.left = itemWidth - viewItem.attribute.width - margin.right;
+            margin.left = itemWidth - viewItem.attribute.actualWidth - margin.right;
             if (DXAlignHorizontalRight == alig)
-                margin.top = margin.bottom = (itemHeight - viewItem.attribute.height) / 2;
+                margin.top = margin.bottom = (itemHeight - viewItem.attribute.actualheight) / 2;
         }
         
         if (DXAlignVerticalTop == (alig & DXAlignVerticalTop)) {
-            margin.bottom = itemHeight - viewItem.attribute.height - margin.top;
+            margin.bottom = itemHeight - viewItem.attribute.actualheight - margin.top;
             if (DXAlignVerticalTop == alig)
-                margin.left = margin.right = (itemWidth - viewItem.attribute.width) / 2;
+                margin.left = margin.right = (itemWidth - viewItem.attribute.actualWidth) / 2;
         }
         
         if (DXAlignVerticalCenter == (alig & DXAlignVerticalCenter)) {
-            margin.top = margin.bottom = (itemHeight - viewItem.attribute.height) / 2;
+            margin.top = margin.bottom = (itemHeight - viewItem.attribute.actualheight) / 2;
             if (DXAlignVerticalCenter == alig)
-                margin.left = margin.right = (itemWidth - viewItem.attribute.width) / 2;
+                margin.left = margin.right = (itemWidth - viewItem.attribute.actualWidth) / 2;
         }
         
         if (DXAlignVerticalBottom == (alig & DXAlignVerticalBottom)) {
-            margin.top = itemHeight - viewItem.attribute.height - margin.bottom;
+            margin.top = itemHeight - viewItem.attribute.actualheight - margin.bottom;
             if (DXAlignVerticalBottom == alig)
-                margin.left = margin.right = (itemWidth - viewItem.attribute.width) / 2;
+                margin.left = margin.right = (itemWidth - viewItem.attribute.actualWidth) / 2;
         }
 
         viewItem.attribute.margin = margin;
@@ -411,7 +449,7 @@
         self.haslayout = TRUE;
         [self updateLayout];
     }
-
+//    [self updateLayout];
     [super layoutSubviews];
 }
 

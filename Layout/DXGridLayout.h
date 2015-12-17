@@ -16,11 +16,14 @@
 
 
 @interface DXGridLayout : UIView {
-    
 }
+
 @property(nonnull, nonatomic, copy)NSArray<DXGridCell *> *rowCells;
 @property(nonnull, nonatomic, copy)NSArray<DXGridCell *> *columnCells;
 @property(nonatomic, assign)DXPadding padding;
+
+-(void)setRowCellsWithObject:(nullable DXGridCell *)firstCell, ...;
+-(void)setColumnCellsWithObject:(nullable DXGridCell *)firstCell, ...;
 
 -(nullable id)initWithFrame:(CGRect)frame Rows:(nullable NSArray<DXGridCell *>*)rows Columns:(nullable NSArray<DXGridCell *>*)columns;
 -(nullable id)initWithFrame:(CGRect)frame Rows:(nullable NSArray<DXGridCell *>*)rows Columns:(nullable NSArray<DXGridCell *>*)columns Padding:(DXPadding)padding;

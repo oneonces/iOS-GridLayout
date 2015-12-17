@@ -56,13 +56,15 @@
     //    DXGridCell *col4 = [[DXGridCell alloc] initWithWeight:2];// column width Weight: 1
     DXGridCell *col4 = [[DXGridCell alloc] initWithDimension:200];// column fixed width 200
     
-    NSArray<DXGridCell *> *rowcells = [[NSArray alloc] initWithObjects:row0, row1, row2, row3, row4, row5, nil];
-    NSArray<DXGridCell *> *colcells = [[NSArray alloc] initWithObjects:col0, col1, col2, col3, col4, nil];
+//    NSArray<DXGridCell *> *rowcells = [[NSArray alloc] initWithObjects:row0, row1, row2, row3, row4, row5, nil];
+//    NSArray<DXGridCell *> *colcells = [[NSArray alloc] initWithObjects:col0, col1, col2, col3, col4, nil];
     
-    gridLayout = [[DXGridLayout alloc] initWithFrame:CGRectMake(0, 0, rectSreen.size.width, rectSreen.size.height)];
+    gridLayout = [[DXGridLayout alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     [gridLayout setPadding:padding];
-    [gridLayout setRowCells:rowcells];
-    [gridLayout setColumnCells:colcells];
+//    [gridLayout setRowCells:rowcells];
+//    [gridLayout setColumnCells:colcells];
+    [gridLayout setRowCellsWithObject:row0, row1, row2, row3, row4, row5, nil];
+    [gridLayout setColumnCellsWithObject:col0, col1, col2, col3, col4, nil];
     
     gridLayout.backgroundColor = [UIColor yellowColor];
     
@@ -210,14 +212,18 @@
 //    DXGridCell *col4 = [[DXGridCell alloc] initWithWeight:2];// column width Weight: 1
     DXGridCell *col4 = [[DXGridCell alloc] initWithDimension:100];// column fixed width
 
-    NSArray<DXGridCell *> *rowcells = [[NSArray alloc] initWithObjects:row0, row1, row2, row3, row4, row5, nil];
-    NSArray<DXGridCell *> *colcells = [[NSArray alloc] initWithObjects:col0, col1, col2, col3, col4, nil];
+//    NSArray<DXGridCell *> *rowcells = [[NSArray alloc] initWithObjects:row0, row1, row2, row3, row4, row5, nil];
+//    NSArray<DXGridCell *> *colcells = [[NSArray alloc] initWithObjects:col0, col1, col2, col3, col4, nil];
 
     gridLayout = [[DXGridLayout alloc] initWithFrame:CGRectMake(0, 0, rectSreen.size.width, rectSreen.size.height)];
     [gridLayout setPadding:padding];
-    [gridLayout setRowCells:rowcells];
-    [gridLayout setColumnCells:colcells];
-
+//    [gridLayout setRowCells:rowcells];
+//    [gridLayout setColumnCells:colcells];
+//    gridLayout.rowCells = @[row0, row1, row2, row3, row4, row5];
+//    gridLayout.columnCells = @[col0, col1, col2, col3, col4];
+    [gridLayout setRowCellsWithObject:row0, row1, row2, row3, row4, row5, nil];
+    [gridLayout setColumnCellsWithObject:col0, col1, col2, col3, col4, nil];
+    
     gridLayout.backgroundColor = [UIColor yellowColor];
     
     UIButton *btn1 = [[UIButton alloc] init];
